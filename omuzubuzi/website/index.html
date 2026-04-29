@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Omuzubuzi — B2B Wholesale Marketplace Kampala</title>
+  <meta name="description" content="Uganda's wholesale market, delivered to your door. Browse verified wholesalers in Owino, Kikuubo, Nakasero. Pay with MTN MoMo or Airtel Money." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --omz-green: #1D9E75; --omz-green-dark: #0F6E56; --omz-green-light: #E1F5EE;
+      --omz-amber: #BA7517; --omz-amber-light: #FAEEDA;
+      --text: #1a1a1a; --muted: #6b7280; --border: rgba(0,0,0,0.1);
+      --bg: #ffffff; --bg2: #f9f9f8; --bg3: #f3f2ef;
+      --rad: 12px; --radm: 8px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --text: #f0ede8; --muted: #9ca3af; --border: rgba(255,255,255,0.12); --bg: #1a1a1a; --bg2: #232323; --bg3: #2c2c2a; }
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: var(--text); background: var(--bg); }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; background: var(--bg); border-bottom: 0.5px solid var(--border); position: sticky; top: 0; z-index: 100; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-mark { width: 34px; height: 34px; border-radius: 9px; background: var(--omz-green); display: flex; align-items: center; justify-content: center; }
+    .logo-text { font-size: 17px; font-weight: 500; color: var(--text); }
+    .logo-tag { font-size: 10px; color: var(--omz-green); font-weight: 500; letter-spacing: 0.5px; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { font-size: 14px; color: var(--muted); text-decoration: none; }
+    .nav-links a:hover { color: var(--omz-green); }
+    .nav-ctas { display: flex; gap: 8px; align-items: center; }
+    .btn-ghost { padding: 7px 16px; border: 0.5px solid var(--border); border-radius: var(--radm); font-size: 13px; background: transparent; cursor: pointer; color: var(--text); }
+    .btn-primary { padding: 7px 16px; border: none; border-radius: var(--radm); font-size: 13px; background: var(--omz-green); color: #fff; cursor: pointer; font-weight: 500; }
+    .lang-btn { padding: 6px 10px; border: 0.5px solid var(--border); border-radius: var(--radm); cursor: pointer; font-size: 12px; color: var(--muted); background: transparent; }
+    .hero { padding: 72px 32px 56px; text-align: center; border-bottom: 0.5px solid var(--border); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; background: var(--omz-green-light); color: #0F6E56; font-size: 12px; font-weight: 500; margin-bottom: 24px; }
+    .hero h1 { font-size: 38px; font-weight: 500; line-height: 1.2; max-width: 580px; margin: 0 auto 16px; }
+    .hero h1 span { color: var(--omz-green); }
+    .hero p { font-size: 16px; color: var(--muted); max-width: 460px; margin: 0 auto 32px; line-height: 1.7; }
+    .hero-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn-hero { padding: 12px 24px; border-radius: var(--radm); font-size: 15px; font-weight: 500; cursor: pointer; border: none; text-decoration: none; display: inline-block; }
+    .btn-hero-p { background: var(--omz-green); color: #fff; }
+    .btn-hero-s { background: var(--bg2); color: var(--text); border: 0.5px solid var(--border); }
+    .trust { margin-top: 40px; display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+    .trust-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--omz-green); flex-shrink: 0; }
+    .stats { padding: 36px 32px; background: var(--bg2); border-bottom: 0.5px solid var(--border); }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 24px; max-width: 680px; margin: 0 auto; text-align: center; }
+    .stat-val { font-size: 28px; font-weight: 500; color: var(--omz-green); }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .section { padding: 56px 32px; border-bottom: 0.5px solid var(--border); }
+    .section.alt { background: var(--bg2); }
+    .sec-label { font-size: 12px; font-weight: 500; color: var(--omz-green); letter-spacing: 0.5px; margin-bottom: 8px; }
+    .sec-title { font-size: 24px; font-weight: 500; margin-bottom: 8px; }
+    .sec-sub { font-size: 15px; color: var(--muted); margin-bottom: 36px; max-width: 440px; line-height: 1.6; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 16px; }
+    .step { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--rad); padding: 20px; }
+    .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--omz-green-light); color: #0F6E56; font-size: 14px; font-weight: 500; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+    .step h3 { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+    .step p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px,1fr)); gap: 10px; }
+    .cat { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 20px 12px; background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--rad); text-decoration: none; transition: border-color 0.15s; }
+    .cat:hover { border-color: var(--omz-green); }
+    .cat-icon { font-size: 22px; }
+    .cat-name { font-size: 13px; font-weight: 500; text-align: center; color: var(--text); }
+    .cat-desc { font-size: 11px; color: var(--muted); text-align: center; }
+    .user-types { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 14px; }
+    .uc { border-radius: var(--rad); padding: 24px; border: 0.5px solid var(--border); }
+    .uc.buyer { background: var(--omz-green-light); border-color: #9FE1CB; }
+    .uc.ws { background: var(--omz-amber-light); border-color: #FAC775; }
+    .uc.rider { background: #E6F1FB; border-color: #B5D4F4; }
+    .uc h3 { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+    .uc.buyer h3 { color: #085041; } .uc.ws h3 { color: #633806; } .uc.rider h3 { color: #0C447C; }
+    .uc.buyer p, .uc.buyer .benefit { color: #0F6E56; font-size: 13px; line-height: 1.5; }
+    .uc.ws p, .uc.ws .benefit { color: #854F0B; font-size: 13px; line-height: 1.5; }
+    .uc.rider p, .uc.rider .benefit { color: #185FA5; font-size: 13px; line-height: 1.5; }
+    .benefit { display: flex; align-items: flex-start; gap: 6px; margin-top: 10px; font-size: 12px; }
+    .uc.buyer .check { color: #1D9E75; } .uc.ws .check { color: #BA7517; } .uc.rider .check { color: #185FA5; }
+    .pay-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+    .pbadge { display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radm); font-size: 13px; font-weight: 500; color: var(--text); }
+    .pdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .compliance { padding: 16px; background: var(--bg3); border: 0.5px solid var(--border); border-radius: var(--radm); border-left: 3px solid var(--omz-amber); }
+    .compliance h4 { font-size: 13px; font-weight: 500; color: var(--omz-amber); margin-bottom: 4px; }
+    .compliance p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .cta-section { padding: 56px 32px; background: var(--omz-green); text-align: center; }
+    .cta-section h2 { font-size: 26px; font-weight: 500; color: #fff; margin-bottom: 10px; }
+    .cta-section p { font-size: 15px; color: #9FE1CB; margin-bottom: 28px; }
+    .cta-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn-white { padding: 11px 24px; background: #fff; border: none; border-radius: var(--radm); font-size: 14px; font-weight: 500; color: var(--omz-green); cursor: pointer; text-decoration: none; }
+    .btn-outline { padding: 11px 24px; background: transparent; border: 1.5px solid rgba(255,255,255,0.5); border-radius: var(--radm); font-size: 14px; font-weight: 500; color: #fff; text-decoration: none; }
+    footer { padding: 32px; background: var(--bg2); border-top: 0.5px solid var(--border); }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 24px; margin-bottom: 28px; }
+    .fc h4 { font-size: 13px; font-weight: 500; margin-bottom: 12px; }
+    .fc a { display: block; font-size: 12px; color: var(--muted); text-decoration: none; margin-bottom: 7px; }
+    .fc a:hover { color: var(--omz-green); }
+    .fc p { font-size: 12px; color: var(--muted); line-height: 1.6; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; border-top: 0.5px solid var(--border); flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 12px; color: var(--muted); }
+    .legal-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .legal-badge { font-size: 10px; padding: 3px 8px; background: var(--bg); border: 0.5px solid var(--border); border-radius: 4px; color: var(--muted); }
+    @media (max-width: 600px) {
+      nav { padding: 12px 16px; } .nav-links { display: none; }
+      .hero { padding: 48px 16px 36px; } .hero h1 { font-size: 26px; }
+      .section { padding: 40px 16px; } .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-mark"><svg viewBox="0 0 20 20" fill="none"><path d="M3 6h14M3 10h10M3 14h7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+    <div><div class="logo-text">Omuzubuzi</div><div class="logo-tag">WHOLESALE MARKETPLACE</div></div>
+  </a>
+  <div class="nav-links">
+    <a href="#categories">Browse</a>
+    <a href="#wholesalers">For wholesalers</a>
+    <a href="#delivery">Delivery partners</a>
+    <a href="#payments">Payments</a>
+  </div>
+  <div class="nav-ctas">
+    <button class="lang-btn" onclick="toggleLang()" id="lang-btn">🇺🇬 EN / LG</button>
+    <button class="btn-ghost">Sign in</button>
+    <button class="btn-primary">Get started</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge"><div style="width:6px;height:6px;border-radius:50%;background:#1D9E75;flex-shrink:0;"></div><span id="badge">Now live in Kampala — Owino · Kikuubo · Nakasero</span></div>
+  <h1 id="h1">Uganda's wholesale market, <span>delivered to your door</span></h1>
+  <p id="hsub">Skip the traffic to Kikuubo. Browse hundreds of wholesalers, order bulk goods, and get delivery via boda, tuk-tuk, or fuso truck — all in UGX.</p>
+  <div class="hero-actions">
+    <a class="btn-hero btn-hero-p" href="#categories">Browse products</a>
+    <a class="btn-hero btn-hero-s" href="#how">See how it works</a>
+  </div>
+  <div class="trust">
+    <div class="trust-item"><div class="trust-dot"></div><span>MTN MoMo &amp; Airtel accepted</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span>KYC-verified wholesalers</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span>URA-compliant receipts</span></div>
+    <div class="trust-item"><div class="trust-dot"></div><span>Escrow payment protection</span></div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div><div class="stat-val">500K+</div><div class="stat-label">SKUs available</div></div>
+    <div><div class="stat-val">5</div><div class="stat-label">Kampala districts</div></div>
+    <div><div class="stat-val">3</div><div class="stat-label">Delivery types</div></div>
+    <div><div class="stat-val">2</div><div class="stat-label">Languages</div></div>
+  </div>
+</div>
+
+<div class="section" id="how">
+  <div class="sec-label">HOW IT WORKS</div>
+  <div class="sec-title" id="hiw-t">Order wholesale in 4 steps</div>
+  <div class="sec-sub" id="hiw-s">From your phone to your doorstep — faster than traveling to the market yourself.</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h3>Register with your phone</h3><p>Sign up with your Uganda number. Get an OTP via SMS. No email or password needed.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Browse &amp; compare</h3><p>Search by name, category, or price. Compare wholesalers by rating, distance, and MOQ.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Pay with MoMo</h3><p>Pay via MTN MoMo or Airtel Money. Funds held in escrow until delivery is confirmed.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Delivery to your shop</h3><p>Boda for small, tuk-tuk or fuso for heavy loads. Track delivery in real time.</p></div>
+  </div>
+</div>
+
+<div class="section alt" id="categories">
+  <div class="sec-label">PRODUCT CATEGORIES</div>
+  <div class="sec-title">Everything your shop needs</div>
+  <div class="sec-sub">8 wholesale categories. Hundreds of verified suppliers.</div>
+  <div class="cats">
+    <a class="cat" href="#"><div class="cat-icon">🌾</div><div class="cat-name">Groceries</div><div class="cat-desc">Rice, flour, sugar...</div></a>
+    <a class="cat" href="#"><div class="cat-icon">🥤</div><div class="cat-name">Beverages</div><div class="cat-desc">Soft drinks, water...</div></a>
+    <a class="cat" href="#"><div class="cat-icon">🧴</div><div class="cat-name">Personal care</div><div class="cat-desc">Soap, lotion, care...</div></a>
+    <a class="cat" href="#"><div class="cat-icon">🏠</div><div class="cat-name">Household</div><div class="cat-desc">Cleaning, utensils...</div></a>
+    <a class="cat" href="#"><div class="cat-icon">📦</div><div class="cat-name">Stationery</div><div class="cat-desc">Paper, pens, office...</div></a>
+    <a class="cat" href="#"><div class="cat-icon">📱</div><div class="cat-name">Electronics</div><div class="cat-desc">Accessories, cables...</div></a>
+    <a class="cat" href="#"><div class="cat-icon">🥬</div><div class="cat-name">Agri-produce</div><div class="cat-desc">Fresh farm produce...</div></a>
+    <a class="cat" href="#"><div class="cat-icon">🗂️</div><div class="cat-name">Other</div><div class="cat-desc">General merchandise...</div></a>
+  </div>
+</div>
+
+<div class="section" id="wholesalers">
+  <div class="sec-label">WHO IT'S FOR</div>
+  <div class="sec-title">Built for every side of the market</div>
+  <div class="sec-sub">Three user types. One platform. Everyone wins.</div>
+  <div class="user-types">
+    <div class="uc buyer">
+      <h3>Buyers &amp; dukas</h3>
+      <p>Retail shops, market vendors, supermarkets, restaurants, and bulk buyers.</p>
+      <div class="benefit"><span class="check">✓</span><span>Restock without leaving your shop</span></div>
+      <div class="benefit"><span class="check">✓</span><span>Compare prices across wholesalers</span></div>
+      <div class="benefit"><span class="check">✓</span><span>Cancel within 10 mins if needed</span></div>
+      <div class="benefit"><span class="check">✓</span><span>English &amp; Luganda interface</span></div>
+    </div>
+    <div class="uc ws">
+      <h3>Wholesalers</h3>
+      <p>Vendors in Owino, Kikuubo, Industrial Area, and Nakasero markets.</p>
+      <div class="benefit"><span class="check">✓</span><span>Reach buyers across all 5 districts</span></div>
+      <div class="benefit"><span class="check">✓</span><span>Manage orders &amp; inventory online</span></div>
+      <div class="benefit"><span class="check">✓</span><span>Weekly payouts to your MoMo</span></div>
+      <div class="benefit"><span class="check">✓</span><span>KYC verified badge builds trust</span></div>
+    </div>
+    <div class="uc rider" id="delivery">
+      <h3>Delivery partners</h3>
+      <p>Boda boda riders, tuk-tuk operators, and fuso truck drivers.</p>
+      <div class="benefit"><span class="check">✓</span><span>Accept delivery jobs nearby</span></div>
+      <div class="benefit"><span class="check">✓</span><span>OpenStreetMap navigation included</span></div>
+      <div class="benefit"><span class="check">✓</span><span>Earnings tracked automatically</span></div>
+      <div class="benefit"><span class="check">✓</span><span>Orders matched to vehicle size</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section alt" id="payments">
+  <div class="sec-label">PAYMENTS &amp; COMPLIANCE</div>
+  <div class="sec-title">Pay the Ugandan way</div>
+  <div class="sec-sub">Mobile money first. Escrow protection. Fully compliant with NPS Act 2020 and URA requirements.</div>
+  <div class="pay-badges">
+    <div class="pbadge"><div class="pdot" style="background:#FCD116;"></div>MTN Mobile Money</div>
+    <div class="pbadge"><div class="pdot" style="background:#EE1C25;"></div>Airtel Money</div>
+    <div class="pbadge"><div class="pdot" style="background:#1A56DB;"></div>Visa / Mastercard</div>
+    <div class="pbadge"><div class="pdot" style="background:#888;"></div>Cash on delivery</div>
+  </div>
+  <div class="compliance">
+    <h4>NPS Act 2020 compliance</h4>
+    <p>As required by Bank of Uganda, orders of UGX 1,000,000 or above require identity verification via national ID, passport, or alien ID before payment is processed. Funds are held in escrow by a licensed payment service provider until delivery is confirmed — Omuzubuzi never holds your money directly.</p>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2 id="cta-t">Ready to transform your restocking?</h2>
+  <p id="cta-s">Join wholesalers and dukas already saving time and transport costs across Kampala.</p>
+  <div class="cta-btns">
+    <a class="btn-white" href="#">Register as buyer</a>
+    <a class="btn-outline" href="#">List your wholesale business</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="fc">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
+        <div class="logo-mark" style="width:28px;height:28px;border-radius:7px;"><svg viewBox="0 0 20 20" fill="none" style="width:16px;height:16px;"><path d="M3 6h14M3 10h10M3 14h7" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <span style="font-size:15px;font-weight:500;">Omuzubuzi</span>
+      </div>
+      <p>B2B wholesale marketplace connecting Kampala's traders. Delivering wholesale to your doorstep.</p>
+    </div>
+    <div class="fc"><h4>Platform</h4><a href="#">Browse products</a><a href="#">For wholesalers</a><a href="#">Delivery partners</a><a href="#">Pricing &amp; commission</a></div>
+    <div class="fc"><h4>Support</h4><a href="#">Help centre</a><a href="#">Dispute resolution</a><a href="#">Contact us</a><a href="#">SMS support</a></div>
+    <div class="fc"><h4>Legal</h4><a href="#">Privacy policy</a><a href="#">Terms of service</a><a href="#">Refund policy</a><a href="#">Data rights (DPPA)</a></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Omuzubuzi. Kampala, Uganda. All prices in UGX.</p>
+    <div class="legal-badges">
+      <span class="legal-badge">DPPA 2019</span>
+      <span class="legal-badge">NPS Act 2020</span>
+      <span class="legal-badge">URA registered</span>
+      <span class="legal-badge">NITA-U</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  let lang = 'en';
+  const copy = {
+    en: { badge:'Now live in Kampala — Owino · Kikuubo · Nakasero', h1:"Uganda's wholesale market, <span style='color:#1D9E75;'>delivered to your door</span>", hsub:"Skip the traffic to Kikuubo. Browse hundreds of wholesalers, order bulk goods, and get delivery via boda, tuk-tuk, or fuso truck — all in UGX.", hiwt:'Order wholesale in 4 steps', hiws:'From your phone to your doorstep — faster than traveling to the market yourself.', ctat:'Ready to transform your restocking?', ctas:'Join wholesalers and dukas already saving time and transport costs across Kampala.', lb:'🇺🇬 EN / LG' },
+    lg: { badge:'Tuli mu Kampala — Owino · Kikuubo · Nakasero', h1:"Katale ka Uganda, <span style='color:#1D9E75;'>ebiwereze okutuukira eka</span>", hsub:"Lekawo okugenda Kikuubo. Noonya abatundisi abangi, gula obutundu, era ofune eddoboozi — nga essente za UGX.", hiwt:'Gula obutundu mu nnyonyi 4', hiws:'Okuva ku simu yo okutuuka ku kkubo lyo — mangu okusinga okugenda katale.', ctat:'Oyagala okukyusa engeri gye weereza?', ctas:"Jjira n'abatundisi n'ababba abaliko bannawe okulowooza ebbanga Kampala.", lb:'🇺🇬 LG / EN' }
+  };
+  function toggleLang() {
+    lang = lang === 'en' ? 'lg' : 'en';
+    const c = copy[lang];
+    document.getElementById('badge').textContent = c.badge;
+    document.getElementById('h1').innerHTML = c.h1;
+    document.getElementById('hsub').textContent = c.hsub;
+    document.getElementById('hiw-t').textContent = c.hiwt;
+    document.getElementById('hiw-s').textContent = c.hiws;
+    document.getElementById('cta-t').textContent = c.ctat;
+    document.getElementById('cta-s').textContent = c.ctas;
+    document.getElementById('lang-btn').textContent = c.lb;
+  }
+</script>
+</body>
+</html>
